@@ -21,6 +21,9 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/ldc/bin
     build-commands:
+      # Uncomment when session translations are actually a thing. 
+      #- chmod +x ./gentl.sh;
+      #  ./gentl.sh
       - chmod +x ./gentl.sh; ./gentl.sh
       - dub add-path .flatpak-dub; dub build --skip-registry=all --config=meta; dub
         build --skip-registry=all --build=release --config=linux-full
@@ -28,11 +31,12 @@ modules:
       - install -Dm 755 ./out/cimgui.so /app/bin/cimgui.so
       # Uncomment when session translations are actually a thing. 
       #- install -Dm644 ./out/*.mo /app/bin
-      - install -Dm644 ./build-aux/linux/inochi-session.appdata.xml /app/share/metainfo/com.inochi2d.inochi-session.metainfo.xml
+      - install -Dm644 ./metainfo/com.inochi2d.inochi-session.metainfo.xml /app/share/metainfo/com.inochi2d.inochi-session.metainfo.xml
       - install -Dm644 ./branding/session/icon_128.png /app/share/icons/hicolor/128x128/apps/com.inochi2d.inochi-session.png
       - install -Dm644 ./branding/session/icon_256.png /app/share/icons/hicolor/256x256/apps/com.inochi2d.inochi-session.png
       - install -Dm644 ./branding/session/icon_512.png /app/share/icons/hicolor/512x512/apps/com.inochi2d.inochi-session.png
-      - desktop-file-edit --set-name="Inochi Session" --set-icon="com.inochi2d.inochi-session" ./build-aux/linux/inochi-session.desktop
+      - desktop-file-edit --set-name="Inochi Session" --set-icon="com.inochi2d.inochi-session"
+        ./build-aux/linux/inochi-session.desktop
       - install -Dm644 ./build-aux/linux/inochi-session.desktop /app/share/applications/com.inochi2d.inochi-session.desktop
 
     sources:
@@ -53,6 +57,6 @@ modules:
         commit: 7caad43eb2b6d423275a3d972ac1e7ee36da2850
         dest: ./branding
 
-      - type: patch
-        path: metainfo.patch
-
+      - type: file
+        path: com.inochi2d.inochi-session.metainfo.xml
+        dest: ./metainfo
