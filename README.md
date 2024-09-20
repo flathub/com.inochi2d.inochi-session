@@ -23,26 +23,24 @@ Use the update-dependencies.sh
 
 ```sh
 ./update-dependencies.sh \
-    --yml-session=../com.inochi2d.inochi-session/com.inochi2d.inochi-session.yml \ 
+    --yml-session=../com.inochi2d.inochi-session/com.inochi2d.inochi-session.yml \
     --skip-patch
 ```
 
 ## Local Test
 
-```
-flatpak-builder --default-branch=localbuild --force-clean --repo=./repo-dir ./build-dir com.inochi2d.inochi-session.yml
+```sh
+flatpak-builder \
+    --default-branch=localbuild \
+    --force-clean \
+    --repo=./repo-dir \
+    ./build-dir com.inochi2d.inochi-session.yml
 
 flatpak build-bundle \
     --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo \
     ./repo-dir \
     inochi-session.x86_64.flatpak \
-    com.inochi2d.inochi_session localbuild
-flatpak build-bundle \
-    --runtime \
-    ./repo-dir \
-    inochi-session.x86_64.debug.flatpak \
-    com.inochi2d.inochi_session.Debug localbuild
+    com.inochi2d.inochi-session localbuild
 
 flatpak --user -y install inochi-session.x86_64.flatpak
-flatpak --user -y install inochi-session.x86_64.debug.flatpak
 ```
