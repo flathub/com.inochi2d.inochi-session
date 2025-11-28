@@ -52,4 +52,9 @@
     <color type="primary" scheme_preference="dark">#242424</color>
   </branding>
   <content_rating type="oars-1.1"/>
+  <keywords>
+    <keyword>vtubing</keyword>
+    <keyword>real time animation</keyword>
+    <keyword>puppet streaming</keyword>
+  </keywords>
 </component>
