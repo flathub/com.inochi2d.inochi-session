@@ -1,10 +1,10 @@
 id: com.inochi2d.inochi-session
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ldc
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm20
 command: inochi-session
 finish-args:
   - --device=dri          # OpenGL rendering
@@ -46,6 +46,11 @@ modules:
 
     sources:
       - dub-add-local-sources.json
+      - type: patch
+        path: patches/i2d-imgui/0000-cmake-rot.patch
+        options:
+          - -d
+          - .flatpak-dub/i2d-imgui/0.8.0+build.5.ga27fcbb/i2d-imgui/
       - latest-session.yml
       - type: git
         url: https://github.com/Inochi2D/branding.git
