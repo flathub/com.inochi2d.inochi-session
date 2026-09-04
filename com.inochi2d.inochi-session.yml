@@ -12,6 +12,7 @@ finish-args:
   - --share=ipc
   - --share=network       # Needed to communicate with external trackers
   - --socket=wayland
+  - --filesystem=home
 
 modules:
   - name: inochi-session
