@@ -1,10 +1,10 @@
 id: com.inochi2d.inochi-session
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.ldc
-  - org.freedesktop.Sdk.Extension.llvm20
+  - org.freedesktop.Sdk.Extension.llvm22
 command: inochi-session
 finish-args:
   - --device=dri          # OpenGL rendering
@@ -19,8 +19,8 @@ modules:
     buildsystem: simple
     build-options:
       append-path: /usr/lib/sdk/ldc/bin
-      prepend-path: /usr/lib/sdk/llvm18/bin
-      prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
+      prepend-path: /usr/lib/sdk/llvm22/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
       env:
         DFLAGS: '-g --d-debug'
     build-commands:
